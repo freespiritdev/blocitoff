@@ -6,6 +6,11 @@ Blocitoff::Application.routes.draw do
   get 'tasks/edit'
 
   devise_for :users
+  resources :users
+  resources :tasks
+
+
+  
   get 'welcome/index'
 
   get 'welcome/about'
