@@ -1,4 +1,6 @@
 Blocitoff::Application.routes.draw do
+  get 'users/index'
+
   get 'tasks/index'
 
   get 'tasks/new'

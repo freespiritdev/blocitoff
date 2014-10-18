@@ -1,2 +1,36 @@
 <h1>Tasks live here!</h1>
 
+<h1>All Tasks</h1>
+<p><%= link_to "New Task", new_task_path, class: 'btn btn-success' %></p>
+<div class="row">
+  <div class="col-md-8">
+
+  <table style = "width:100%">
+    <tr>
+      <td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="media">
+        <div class="media-body">
+        <h4 class="media-heading">
+            <%= link_to task.name, task_path(task) %>
+        </h4>
+        
+       </td>
+    </tr>
+        
+        </div>
+      </div>
+    <% end %>
+
+    </table>
+    
+  </div>
+ 
+</div>
+
+
+
+
