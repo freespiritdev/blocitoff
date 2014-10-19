@@ -1,13 +1,15 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @task = current_user.tasks.all
+    @tasks = current_user.tasks.all
   end
 
   def create
     @task = current_user.tasks.build(tasks_params)
     if @task.save
       flash[:notice] = "Awesome, task was created successfully!"
-      redirect_to @task
+      redirect_to tasks_url
     else
       flash[:error] = "There was an error creating the task. Please try again"
       render :new
@@ -16,10 +18,6 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-  end
-
-  def show
-    @task = Task.find params[:user_id]
   end
 
   def update
@@ -39,7 +37,7 @@ class TasksController < ApplicationController
   private
 
   def tasks_params
-    params.require(:task).permit(:description)
+    params.require(:task).permit(:name)
   end
 
 

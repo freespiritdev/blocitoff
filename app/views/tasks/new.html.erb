@@ -1,4 +1,10 @@
-<%= form_for Task.new do |form| %>
-  <%= form.text_field :description, placeholder: 'Description' %>
-  <%= form.submit 'Save' %>
+<div class="col-md-8">
+<%= form_for @task do |f| %>
+<div class="form-group">
+        <%= f.label :name, 'New Task' %>
+        <%= f.text_field :name, class: 'form-control', placeholder: "task to do" %>
+      </div>
+     
+        <%= f.submit "Save", class: 'btn btn-success' %>
+        <%= link_to "Cancel", tasks_path, class: 'btn btn-warning' %>
 <% end %>

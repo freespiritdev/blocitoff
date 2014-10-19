@@ -6,27 +6,20 @@
   <div class="col-md-8">
 
   <table style = "width:100%">
-    <tr>
-      <td>
-    </tr>
-
+  <% @tasks.each do |task| %>
     <tr>
       <td>
         <div class="media">
         <div class="media-body">
         <h4 class="media-heading">
-            <%= link_to task.name, task_path(task) %>
+            <%= link_to task.name, edit_task_path(task) %>
         </h4>
-        
-       </td>
+        </td>
     </tr>
-        
+        <% end %>
         </div>
       </div>
-    <% end %>
-
-    </table>
-    
+  </table>
   </div>
  
 </div>
