@@ -14,10 +14,14 @@
         <h4 class="media-heading">
             <%= link_to task.name, edit_task_path(task) %>
         </h4>
+        </td>
+    </tr>
+    <tr>
+      <td>
         <small>
           created <%= time_ago_in_words(task.created_at) %> ago by <%= task.user.name %>
         </small>
-        </td>
+      </td>
     </tr>
         <% end %>
         </div>
