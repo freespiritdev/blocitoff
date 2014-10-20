@@ -11,5 +11,5 @@ Blocitoff::Application.routes.draw do
   get 'welcome/about'
 
   
-    root to: 'welcome#index'
+    root to: 'tasks#index'
 end
