@@ -20,10 +20,13 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  def edit
+    @task = current_user.tasks.find(params[:id])
+  end
+
   def update
-    @task = Task.friendly.find(params[:user_id])
-    #@wiki = Wiki.find(params[:id])
-    if @task.update_attributes(task_params)
+    @task = current_user.tasks.find(params[:id]) 
+    if @task.update_attributes(tasks_params)
       flash[:notice] = "Task was updated."
       redirect_to @task
       else
@@ -32,7 +35,11 @@ class TasksController < ApplicationController
     end
   end
 
-
+def destroy
+    @task = current_user.tasks.find(params[:id])
+    @task.destroy
+    redirect_to tasks_path, :notice => "Completed!"
+end
 
   private
 
