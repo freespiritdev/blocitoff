@@ -5,30 +5,35 @@
   <div class="col-md-8">
 
   <table style = "width:100%">
-  <% @tasks.each do |task| %>
-    <tr>
-      <td>
-        <div class="media">
-        <div class="media-body">
-        <h4 class="media-heading">
-            <%= link_to task.name, edit_task_path(task) %>
-        </h4>
-        </td>
-    </tr>
-    <tr>
-      <td>
-        <small>
-          created <%= time_ago_in_words(task.created_at) %> ago by <%= task.user.name %>
-        </small>
-    
     <th>
-    <%= link_to "Complete Task", task_path(task), :confirm => 'Are you sure you want to complete this task?', :method => :delete %> 
+      <tr>
+        <td> <h4>Current Task</h4></td>
+        <td><h4>Days Left</h4></td>
+        <td><h4>Completed</h4></td>
+        <td><h4>Delete Task</h4></td>
+      </tr>
     </th>
-    </td>
-    </tr>
-        <% end %>
-        </div>
-      </div>
+
+    <% @tasks.each do |task| %>
+    <tr>
+      <td>
+    
+          <%= link_to task.name, edit_task_path(task) %>
+        </h4><br>
+          <small>
+          created <%= time_ago_in_words(task.created_at) %> ago by <%= task.user.name %>
+          </small>
+      
+        <td class="col-md-2"><%= 7 - (Time.now.to_date - task.created_at.to_date).to_i %></td>
+        <td>
+          code goes here
+        </td>
+
+        <td>
+          <%= link_to "Complete Task", task_path(task), :confirm => 'Are you sure you want to complete this task?', :method => :delete %> 
+        </td>
+      </tr>
+    <% end %>
   </table>
   </div>
  
