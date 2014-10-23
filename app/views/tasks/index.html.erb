@@ -9,28 +9,25 @@
       <tr>
         <td> <h4>Current Task</h4></td>
         <td><h4>Days Left</h4></td>
-        <td><h4>Completed</h4></td>
+        <td><h4>Complete Task</h4></td>
         <td><h4>Delete Task</h4></td>
       </tr>
     </th>
 
     <% @tasks.each do |task| %>
     <tr>
-      <td>
-    
-          <%= link_to task.name, edit_task_path(task) %>
+      <td><%= link_to task.name, edit_task_path(task) %>
         </h4><br>
           <small>
           created <%= time_ago_in_words(task.created_at) %> ago by <%= task.user.name %>
           </small>
       
-        <td class="col-md-2"><%= 7 - (Time.now.to_date - task.created_at.to_date).to_i %></td>
+        <td><%= 7 - (Time.now.utc.to_date - task.created_at.to_date).to_i %></td>
         <td>
-          code goes here
+          checkbox here
         </td>
-
         <td>
-          <%= link_to "Complete Task", task_path(task), :confirm => 'Are you sure you want to complete this task?', :method => :delete %> 
+          <%= link_to "Delete Task", task_path(task), :confirm => 'Are you sure you want to complete this task?', :method => :delete %> 
         </td>
       </tr>
     <% end %>
@@ -38,6 +35,8 @@
   </div>
  
 </div>
+
+<%= will_paginate @taskss %>
 
 
 
